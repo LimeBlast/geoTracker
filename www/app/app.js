@@ -1,11 +1,4 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('geoTracker', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,7 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('tab', {
     url: "/tab",
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: "app/tabs/tabs.html"
   })
 
   // Each tab has its own nav history stack:
@@ -42,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+        templateUrl: 'app/dash/dash.html',
         controller: 'DashCtrl'
       }
     }
@@ -52,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/chats',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
+          templateUrl: 'app/chats/chats.html',
           controller: 'ChatsCtrl'
         }
       }
@@ -61,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/chats/:chatId',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
+          templateUrl: 'app/chats/chat-detail.html',
           controller: 'ChatDetailCtrl'
         }
       }
@@ -71,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/account',
     views: {
       'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+        templateUrl: 'app/account/account.html',
         controller: 'AccountCtrl'
       }
     }
