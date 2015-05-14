@@ -1,4 +1,4 @@
-angular.module('geoTracker', ['ionic'])
+angular.module('geoTracker', ['ionic', 'ngCordova'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
