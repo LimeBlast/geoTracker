@@ -9,7 +9,7 @@
     vm.example = 'This proves data binding works';
 
     $ionicPlatform.ready(function () {
-      //vm.device = $cordovaDevice.getDevice();
+      vm.device = $cordovaDevice.getDevice();
     });
 
 
