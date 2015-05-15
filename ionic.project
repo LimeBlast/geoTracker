@@ -1,9 +1,4 @@
 {
   "name": "geoTracker",
-  "app_id": "",
-  "gulpStartupTasks": [
-      "sass",
-      "templatecache",
-      "watch"
-    ]
+  "app_id": ""
 }

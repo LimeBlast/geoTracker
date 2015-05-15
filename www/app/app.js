@@ -1,4 +1,4 @@
-angular.module('geoTracker', ['ionic', 'ngCordova', 'templates'])
+angular.module('geoTracker', ['ionic', 'ngCordova'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -20,7 +20,7 @@ angular.module('geoTracker', ['ionic', 'ngCordova', 'templates'])
 
       .state('home', {
         url: '/home',
-        templateUrl: 'home/home.html'
+        templateUrl: 'app/home/home.html'
       });
 
     $urlRouterProvider.otherwise('/home');
