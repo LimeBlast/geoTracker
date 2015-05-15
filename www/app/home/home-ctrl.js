@@ -13,9 +13,9 @@
 
 
       var watchOptions = {
-        frequency: 1000,
+        maximumAge: 3000,
         timeout: 3000,
-        enableHighAccuracy: false // may cause errors if true
+        enableHighAccuracy: true
       };
 
       var watch = $cordovaGeolocation.watchPosition(watchOptions);
