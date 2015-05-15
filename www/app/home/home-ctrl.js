@@ -13,7 +13,7 @@
 
 
       var watchOptions = {
-        maximumAge: 3000,
+        maximumAge: 3600000,
         timeout: 3000,
         enableHighAccuracy: true
       };
@@ -22,7 +22,9 @@
       watch.then(
         null,
         function (err) {
-          // error
+          vm.lat = 'Not working';
+          vm.long = 'see console.log';
+          console.log(err);
         },
         function (position) {
           vm.lat = position.coords.latitude;
