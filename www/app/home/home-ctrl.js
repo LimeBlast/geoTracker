@@ -22,13 +22,13 @@
         .getCurrentPosition(geoOptions)
         .then(
         updatePosition,
-        updatePositionFailed
+        onError
       );
 
       $cordovaGeolocation.watchPosition(geoOptions)
         .then(
         null,
-        updatePositionFailed,
+        onError,
         updatePosition
       );
 
@@ -39,11 +39,8 @@
         vm.info = new Date();
       }
 
-      function updatePositionFailed(error) {
-        vm.lat = 'error';
-        vm.long = 'error';
-        vm.info = JSON.stringify(err);
-        vm.count = +1;
+      function onError(error) {
+        vm.error = JSON.stringify(error);
       }
 
     });
