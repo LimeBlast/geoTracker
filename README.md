@@ -5,6 +5,7 @@ The purpose of this experiment is to test the plausibility of using Cordova to p
 
 ## Getting started
 
+- `npm install -g gulp cordova`
 - Clone the repo
 - `npm install`
 - `node tasks/platforms.js && node tasks/plugins.js` ([source](http://jbavari.github.io/blog/2014/06/24/managing-cordova-plugins-with-package-dot-json-and-hooks/))
