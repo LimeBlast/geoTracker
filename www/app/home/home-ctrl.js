@@ -9,7 +9,7 @@
     vm.example = 'This proves data binding works';
     vm.count = 0;
 
-    vm.findGeolocation = function () {
+    vm.startWatchPosition = function () {
       console.log("navigator.geolocation works");
 
       var onSuccess = function (position) {
@@ -21,18 +21,24 @@
         vm.count += 1;
       };
 
-      $cordovaGeolocation
+      vm.watch = $cordovaGeolocation
         .watchPosition({
           enableHighAccuracy: true
-        }).then(
+        });
+
+      vm.watch.then(
         null,
         onError,
         onSuccess
       );
     };
 
+    vm.endWatchPosition = function () {
+      vm.watch.clearWatch();
+    };
+
     $ionicPlatform.ready(function () {
-      //vm.findGeolocation();
+      //vm.startWatchPosition();
     });
 
     function onError(error) {
