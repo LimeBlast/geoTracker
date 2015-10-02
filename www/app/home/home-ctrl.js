@@ -1,14 +1,13 @@
 (function () {
   'use strict';
 
-  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', '$ionicLoading', '$firebaseArray', HomeCtrl]);
+  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', '$ionicLoading', 'Coords', HomeCtrl]);
 
-  function HomeCtrl($ionicPlatform, $cordovaGeolocation, $ionicLoading, $firebaseArray) {
+  function HomeCtrl($ionicPlatform, $cordovaGeolocation, $ionicLoading, Coords) {
     var vm = this;
 
-    var firebaseObj = new Firebase("https://limeblast-geotracker.firebaseio.com/Coords");
-    var fb = $firebaseArray(firebaseObj);
-
+    vm.coords = Coords;
+    vm.session = Math.random().toString(36).substr(2, 5);
     vm.example = 'This proves data binding works';
     vm.count = 0;
 
@@ -30,11 +29,12 @@
         vm.timestamp = position.timestamp;
         vm.count += 1;
 
-        fb.$add({
+        vm.coords.$add({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           accuracy: position.coords.accuracy,
-          timestamp: position.timestamp
+          timestamp: position.timestamp,
+          session: vm.session
         }).then(function (ref) {
           console.log(ref);
         }, onError);
