@@ -11,14 +11,10 @@
       </div>
     </div>
 
-    <div class="button-bar">
-      <a class="button" ng-click="vm.startWatchPosition()">Start Watch Position</a>
-      <a class="button" ng-click="vm.endWatchPosition()">End Watch Position</a>
-    </div>
-
-    <div class="card" ng-show="vm.coords">
+    <div class="card">
       <div class="item item-divider">Geolocation</div>
-      <div class="item">
+      <ion-toggle ng-model="vm.watchPosition" ng-change="vm.updateWatchPosition()">Watch position</ion-toggle>
+      <div class="item" ng-show="vm.coords">
         <div class="row">
           <div class="col">
             <h2>Latitude</h2>

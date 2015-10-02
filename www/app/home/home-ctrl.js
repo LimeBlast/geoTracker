@@ -10,8 +10,6 @@
     vm.count = 0;
 
     vm.startWatchPosition = function () {
-      console.log("navigator.geolocation works");
-
       var onSuccess = function (position) {
         vm.coords = true;
         vm.latitude = position.coords.latitude;
@@ -35,6 +33,14 @@
 
     vm.endWatchPosition = function () {
       vm.watch.clearWatch();
+    };
+
+    vm.updateWatchPosition = function () {
+      if (vm.watchPosition) {
+        vm.startWatchPosition();
+      } else {
+        vm.endWatchPosition();
+      }
     };
 
     $ionicPlatform.ready(function () {
