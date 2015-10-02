@@ -22,6 +22,7 @@
   "cordovaPlugins": [
     "org.apache.cordova.device",
     "org.apache.cordova.console",
+    "cordova-plugin-geolocation",
     "com.ionic.keyboard",
     {
       "locator": "https://github.com/apache/cordova-plugin-whitelist.git",
