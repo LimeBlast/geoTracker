@@ -6,9 +6,10 @@
   function HomeCtrl($ionicPlatform, $cordovaDevice, $cordovaGeolocation) {
     var vm = this;
 
-    vm.example = 'This proves data binding works';
-
     $ionicPlatform.ready(function () {
+      vm.example = 'This proves data binding works';
+      vm.count = 0;
+
       vm.device = $cordovaDevice.getDevice();
 
       var geoOptions = {
@@ -19,32 +20,31 @@
 
       $cordovaGeolocation
         .getCurrentPosition(geoOptions)
-        .then(function (position) {
-          vm.lat = position.coords.latitude;
-          vm.long = position.coords.longitude;
-          vm.command = 'getCurrentPosition';
+        .then(
+        updatePosition,
+        updatePositionFailed
+      );
 
-          var watch = $cordovaGeolocation.watchPosition(geoOptions);
+      $cordovaGeolocation.watchPosition(geoOptions)
+        .then(
+        null,
+        updatePositionFailed,
+        updatePosition
+      );
 
-          watch.clearWatch();
-          watch.then(
-            null,
-            function (err) {
-              vm.lat = 'Watch failed';
-              vm.long = 'see console.log';
-              console.log('Error w/ watchPosition: ' + JSON.stringify(err));
-            },
-            function (position) {
-              vm.lat = position.coords.latitude;
-              vm.long = position.coords.longitude;
-              vm.command = 'watchPosition';
-            });
+      function updatePosition(position) {
+        vm.lat = position.coords.latitude;
+        vm.long = position.coords.longitude;
+        vm.count = +1;
+        vm.info = new Date();
+      }
 
-        }, function (err) {
-          vm.lat = 'Get failed';
-          vm.long = 'see console.log';
-          console.log('Error w/ getCurrentPosition: ' + JSON.stringify(err));
-        });
+      function updatePositionFailed(error) {
+        vm.lat = 'error';
+        vm.long = 'error';
+        vm.info = JSON.stringify(err);
+        vm.count = +1;
+      }
 
     });
 
