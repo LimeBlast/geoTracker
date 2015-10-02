@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaDevice', '$cordovaGeolocation', HomeCtrl]);
+  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', HomeCtrl]);
 
-  function HomeCtrl($ionicPlatform, $cordovaDevice, $cordovaGeolocation) {
+  function HomeCtrl($ionicPlatform, $cordovaGeolocation) {
     var vm = this;
 
     vm.example = 'This proves data binding works';
@@ -22,16 +22,16 @@
       };
 
       $cordovaGeolocation
-        .getCurrentPosition({
+        .watchPosition({
           enableHighAccuracy: true
         }).then(
-        onSuccess,
-        onError
+        null,
+        onError,
+        onSuccess
       );
     };
 
     $ionicPlatform.ready(function () {
-      vm.device = $cordovaDevice.getDevice();
       //vm.findGeolocation();
     });
 
