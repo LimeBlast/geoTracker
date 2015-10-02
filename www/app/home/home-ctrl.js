@@ -1,15 +1,24 @@
 (function () {
   'use strict';
 
-  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', HomeCtrl]);
+  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', '$ionicLoading', HomeCtrl]);
 
-  function HomeCtrl($ionicPlatform, $cordovaGeolocation) {
+  function HomeCtrl($ionicPlatform, $cordovaGeolocation, $ionicLoading) {
     var vm = this;
 
     vm.example = 'This proves data binding works';
     vm.count = 0;
 
     vm.startWatchPosition = function () {
+
+      $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+      });
+
       var onSuccess = function (position) {
         vm.coords = true;
         vm.latitude = position.coords.latitude;
@@ -17,6 +26,7 @@
         vm.accuracy = position.coords.accuracy;
         vm.timestamp = position.timestamp;
         vm.count += 1;
+        $ionicLoading.hide();
       };
 
       vm.watch = $cordovaGeolocation
