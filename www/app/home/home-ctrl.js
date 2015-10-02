@@ -11,28 +11,42 @@
     $ionicPlatform.ready(function () {
       vm.device = $cordovaDevice.getDevice();
 
-
-      var watchOptions = {
-        maximumAge: 3600000,
-        timeout: 3000,
-        enableHighAccuracy: true
+      var geoOptions = {
+        maximumAge: 5 * 60 * 1000,
+        timeout: 60 * 1000,
+        enableHighAccuracy: false
       };
 
-      var watch = $cordovaGeolocation.watchPosition(watchOptions);
-      watch.then(
-        null,
-        function (err) {
-          vm.lat = 'Not working';
-          vm.long = 'see console.log';
-          console.log(err);
-        },
-        function (position) {
+      $cordovaGeolocation
+        .getCurrentPosition(geoOptions)
+        .then(function (position) {
           vm.lat = position.coords.latitude;
           vm.long = position.coords.longitude;
+          vm.command = 'getCurrentPosition';
+
+          var watch = $cordovaGeolocation.watchPosition(geoOptions);
+
+          watch.clearWatch();
+          watch.then(
+            null,
+            function (err) {
+              vm.lat = 'Watch failed';
+              vm.long = 'see console.log';
+              console.log('Error w/ watchPosition: ' + JSON.stringify(err));
+            },
+            function (position) {
+              vm.lat = position.coords.latitude;
+              vm.long = position.coords.longitude;
+              vm.command = 'watchPosition';
+            });
+
+        }, function (err) {
+          vm.lat = 'Get failed';
+          vm.long = 'see console.log';
+          console.log('Error w/ getCurrentPosition: ' + JSON.stringify(err));
         });
 
     });
-
 
   }
 })();
