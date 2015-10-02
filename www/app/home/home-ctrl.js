@@ -15,7 +15,7 @@
       var geoOptions = {
         maximumAge: 5 * 60 * 1000,
         timeout: 60 * 1000,
-        enableHighAccuracy: false
+        enableHighAccuracy: true
       };
 
       $cordovaGeolocation
