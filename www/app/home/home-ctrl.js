@@ -12,10 +12,17 @@
     vm.findGeolocation = function () {
       console.log("navigator.geolocation works");
 
+      var onSuccess = function (position) {
+        vm.coords = true;
+        vm.latitude = position.coords.latitude;
+        vm.longitude = position.coords.longitude;
+        vm.accuracy = position.coords.accuracy;
+        vm.timestamp = position.timestamp;
+        vm.count += 1;
+      };
+
       $cordovaGeolocation
         .getCurrentPosition({
-          maximumAge: 5 * 60 * 1000,
-          timeout: 60 * 1000,
           enableHighAccuracy: true
         }).then(
         onSuccess,
@@ -25,17 +32,8 @@
 
     $ionicPlatform.ready(function () {
       vm.device = $cordovaDevice.getDevice();
-      vm.findGeolocation();
+      //vm.findGeolocation();
     });
-
-    var onSuccess = function (position) {
-      console.log(position.coords);
-      vm.coords = true;
-      vm.latitude = position.coords.latitude;
-      vm.longitude = position.coords.longitude;
-      vm.accuracy = position.coords.accuracy;
-      vm.timestamp = position.timestamp;
-    };
 
     function onError(error) {
       alert('code: ' + error.code + '\n' +
