@@ -6,44 +6,41 @@
   function HomeCtrl($ionicPlatform, $cordovaDevice, $cordovaGeolocation) {
     var vm = this;
 
-    $ionicPlatform.ready(function () {
-      vm.example = 'This proves data binding works';
-      vm.count = 0;
+    vm.example = 'This proves data binding works';
+    vm.count = 0;
 
-      vm.device = $cordovaDevice.getDevice();
-
-      var geoOptions = {
-        maximumAge: 5 * 60 * 1000,
-        timeout: 60 * 1000,
-        enableHighAccuracy: true
-      };
+    vm.findGeolocation = function () {
+      console.log("navigator.geolocation works");
 
       $cordovaGeolocation
-        .getCurrentPosition(geoOptions)
-        .then(
-        updatePosition,
+        .getCurrentPosition({
+          maximumAge: 5 * 60 * 1000,
+          timeout: 60 * 1000,
+          enableHighAccuracy: true
+        }).then(
+        onSuccess,
         onError
       );
+    };
 
-      $cordovaGeolocation.watchPosition(geoOptions)
-        .then(
-        null,
-        onError,
-        updatePosition
-      );
-
-      function updatePosition(position) {
-        vm.lat = position.coords.latitude;
-        vm.long = position.coords.longitude;
-        vm.count = +1;
-        vm.info = new Date();
-      }
-
-      function onError(error) {
-        vm.error = JSON.stringify(error);
-      }
-
+    $ionicPlatform.ready(function () {
+      vm.device = $cordovaDevice.getDevice();
+      vm.findGeolocation();
     });
+
+    var onSuccess = function (position) {
+      console.log(position.coords);
+      vm.coords = true;
+      vm.latitude = position.coords.latitude;
+      vm.longitude = position.coords.longitude;
+      vm.accuracy = position.coords.accuracy;
+      vm.timestamp = position.timestamp;
+    };
+
+    function onError(error) {
+      alert('code: ' + error.code + '\n' +
+        'message: ' + error.message + '\n');
+    }
 
   }
 })();

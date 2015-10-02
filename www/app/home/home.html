@@ -27,24 +27,34 @@
         </div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" ng-show="vm.coords">
       <div class="item item-divider">Geolocation</div>
       <div class="item">
         <div class="row">
           <div class="col">
             <h2>Latitude</h2>
 
-            <p>{{vm.lat}}</p>
+            <p>{{vm.latitude}}</p>
           </div>
           <div class="col">
             <h2>Longitude</h2>
 
-            <p>{{vm.long}}</p>
+            <p>{{vm.longitude}}</p>
+          </div>
+          <div class="col">
+            <h2>Accuracy</h2>
+
+            <p>{{vm.accuracy}}</p>
+          </div>
+          <div class="col">
+            <h2>Timestamp</h2>
+
+            <p>{{vm.timestamp}}</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="card" ng-show="error">
+    <div class="card" ng-show="vm.error">
       <div class="item item-divider">Error</div>
       <div class="item">
         <div class="row">
