@@ -13,7 +13,39 @@
 
     vm.map = {
       center: vm.latLng,
-      markers: [],
+      markers: [
+        //{
+        //  id: 1,
+        //  latitude: 45,
+        //  longitude: -74,
+        //  showWindow: false,
+        //  options: {
+        //    animation: 1,
+        //    labelContent: 'Markers id 1',
+        //    labelAnchor: "22 0",
+        //    labelClass: "marker-labels"
+        //  }
+        //},
+        //{
+        //  id: 2,
+        //  latitude: 15,
+        //  longitude: 30,
+        //  showWindow: false,
+        //},
+        //{
+        //  id: 3,
+        //  icon: 'assets/images/plane.png',
+        //  latitude: 37,
+        //  longitude: -122,
+        //  showWindow: false,
+        //  title: 'Plane',
+        //  options: {
+        //    labelContent: 'Markers id 3',
+        //    labelAnchor: "26 0",
+        //    labelClass: "marker-labels"
+        //  }
+        //}
+      ],
       zoom: 16
     };
 
@@ -35,7 +67,7 @@
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           title: 'Your location',
-          id: 12
+          id: vm.session
         });
         vm.accuracy = position.coords.accuracy;
         vm.timestamp = position.timestamp;
