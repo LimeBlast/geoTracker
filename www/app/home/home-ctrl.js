@@ -8,7 +8,6 @@
 
     vm.coords = Coords;
     vm.session = Math.random().toString(36).substr(2, 5);
-    vm.example = 'This proves data binding works';
     vm.count = 0;
 
     vm.startWatchPosition = function () {
