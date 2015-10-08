@@ -8,9 +8,10 @@ The purpose of this experiment is to test the plausibility of using Cordova to p
 - `npm install -g gulp cordova`
 - Clone the repo
 - `npm install`
+- `bower install`
 - `node tasks/platforms.js && node tasks/plugins.js` ([source](http://jbavari.github.io/blog/2014/06/24/managing-cordova-plugins-with-package-dot-json-and-hooks/))
-- Launch the emulator / connect your phone
-- `ionic emulate <platform> -l -c -s` (livereload, consolelog, serverlog)
+- Launch the emulator / connect your phone `ionic emulate <platform> -l -c -s` (livereload, consolelog, serverlog)
+- or `ionic serve --address 127.0.0.1`
 
 ## Notes
 

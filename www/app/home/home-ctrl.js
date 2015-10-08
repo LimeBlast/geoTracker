@@ -13,6 +13,7 @@
 
     vm.map = {
       center: vm.latLng,
+      markers: [],
       zoom: 16
     };
 
@@ -30,6 +31,12 @@
         vm.showCoords = true;
         vm.latLng.latitude = position.coords.latitude;
         vm.latLng.longitude = position.coords.longitude;
+        vm.map.markers.push({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          title: 'Your location',
+          id: 12
+        });
         vm.accuracy = position.coords.accuracy;
         vm.timestamp = position.timestamp;
         vm.count += 1;
