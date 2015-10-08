@@ -8,12 +8,12 @@
           <div class="col">
             <h2>Latitude</h2>
 
-            <p>{{vm.geo.coordinates[1]}}</p>
+            <p>{{vm.geolocation.coordinates[1]}}</p>
           </div>
           <div class="col">
             <h2>Longitude</h2>
 
-            <p>{{vm.geo.coordinates[0]}}</p>
+            <p>{{vm.geolocation.coordinates[0]}}</p>
           </div>
           <div class="col">
             <h2>Accuracy</h2>
@@ -36,7 +36,7 @@
       </div>
       <div class="item" ng-show="vm.showCoords">
         <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' ng-if='vm.showCoords'>
-          <ui-gmap-marker idKey='vm.session' coords='vm.geo'></ui-gmap-marker>
+          <ui-gmap-marker idKey='vm.session' coords='vm.geolocation'></ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
     </div>

@@ -9,10 +9,10 @@
     vm.coords = Coords;
     vm.session = Math.random().toString(36).substr(2, 5);
     vm.count = 0;
-    vm.geo = {"type": "Point", "coordinates": [51.4768500, -0.0005290]}; // something to start with
+    vm.geolocation = {"type": "Point", "coordinates": [51.4768500, -0.0005290]}; // something to start with
 
     vm.map = {
-      center: vm.geo,
+      center: vm.geolocation,
       zoom: 16
     };
 
@@ -28,14 +28,14 @@
 
       var onSuccess = function (position) {
         vm.showCoords = true;
-        vm.geo.coordinates[0] = position.coords.longitude;
-        vm.geo.coordinates[1] = position.coords.latitude;
+        vm.geolocation.coordinates[0] = position.coords.longitude;
+        vm.geolocation.coordinates[1] = position.coords.latitude;
         vm.accuracy = position.coords.accuracy;
         vm.timestamp = position.timestamp;
         vm.count += 1;
 
         vm.coords.$add({
-          geo: vm.geo,
+          geolocation: vm.geolocation,
           accuracy: position.coords.accuracy,
           timestamp: position.timestamp,
           session: vm.session
