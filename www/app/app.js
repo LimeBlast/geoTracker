@@ -1,4 +1,4 @@
-angular.module('geoTracker', ['ionic', 'ngCordova', 'firebase'])
+angular.module('geoTracker', ['ionic', 'ngCordova', 'firebase', 'uiGmapgoogle-maps'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -25,4 +25,11 @@ angular.module('geoTracker', ['ionic', 'ngCordova', 'firebase'])
 
     $urlRouterProvider.otherwise('/home');
 
+  })
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyCBUGC7R6WI5DMui8rTxhKawjO8i7NBqxk',
+      v: '3.20', //defaults to latest 3.X anyhow
+      libraries: 'weather,geometry,visualization'
+    });
   });

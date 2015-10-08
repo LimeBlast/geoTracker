@@ -1,14 +1,16 @@
 (function () {
   'use strict';
 
-  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', '$ionicLoading', 'Coords', HomeCtrl]);
+  angular.module('geoTracker').controller('HomeCtrl', ['$ionicPlatform', '$cordovaGeolocation', '$ionicLoading', 'uiGmapGoogleMapApi', 'Coords', HomeCtrl]);
 
-  function HomeCtrl($ionicPlatform, $cordovaGeolocation, $ionicLoading, Coords) {
+  function HomeCtrl($ionicPlatform, $cordovaGeolocation, $ionicLoading, uiGmapGoogleMapApi, Coords) {
     var vm = this;
 
     vm.coords = Coords;
     vm.session = Math.random().toString(36).substr(2, 5);
     vm.count = 0;
+
+    vm.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
     vm.startWatchPosition = function () {
 
