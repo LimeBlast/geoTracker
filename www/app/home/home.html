@@ -44,7 +44,7 @@
       </div>
       <div class="item" ng-show="vm.showCoords">
         <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' ng-if='vm.showCoords'>
-          <ui-gmap-markers models="vm.map.markers" coords="'self'" icon="'icon'" modelsbyref="true"></ui-gmap-markers>
+          <ui-gmap-marker idKey='vm.session' coords='vm.latLng'></ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
     </div>
