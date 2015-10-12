@@ -7,6 +7,10 @@
     var vm = this;
 
     $ionicPlatform.ready(function () {
+      cordova.plugins.backgroundMode.setDefaults({
+        title: 'geoTracker',
+        text: 'Watching your location'
+      });
 
       vm.coords = Coords;
       vm.session = Math.random().toString(36).substr(2, 5);
