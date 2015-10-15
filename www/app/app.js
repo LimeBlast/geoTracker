@@ -1,4 +1,4 @@
-angular.module('geoTracker', ['ionic', 'ngCordova', 'firebase', 'uiGmapgoogle-maps'])
+angular.module('geoTracker', ['ionic', 'ngCordova', 'firebase', 'uiGmapgoogle-maps', 'templates'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
