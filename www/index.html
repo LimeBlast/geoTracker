@@ -49,18 +49,18 @@
   <script src="lib/angular-google-maps/dist/angular-google-maps.js"></script>
 
   <!-- your app's js -->
-  <script src="app/app.js"></script>
+  <script src="dist/dist_js/app/app.js"></script>
 
   <!-- controllers -->
-  <script src="app/home/home-ctrl.js"></script>
+  <script src="dist/dist_js/app/home/home-ctrl.js"></script>
 
   <!-- services -->
-  <script src="app/services/coords.js"></script>
+  <script src="dist/dist_js/app/services/coords.js"></script>
 
   <!-- templates -->
-  <script src="app/templates.js"></script>
+  <script src="dist/dist_js/app/templates.js"></script>
 </head>
-<body ng-app="geoTracker">
+<body ng-app="geoTracker" ng-strict-di>
 <!--
   The nav bar that will be updated as we navigate between views.
 -->

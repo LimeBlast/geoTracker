@@ -11,6 +11,7 @@
    "gulpStartupTasks": [
       "sass",
       "templatecache",
+      "ng_annotate",
       "watch"
     ]
 }
